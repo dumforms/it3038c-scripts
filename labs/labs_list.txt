@@ -1,0 +1,22 @@
+Lab #		Git Folder(s)			Filename(s)
+============================================================
+01		it3038c-scripts/bash/		-
+		it3038c-scripts/powershell/	-
+
+02		it3038c-scripts/bash/		covid.sh
+		it3038c-scripts/bash/		myFirstScript.sh
+
+03		it3038c-scripts/powershell/	sysinfo.ps1
+		-				sysOutput.txt
+
+04		it3038c-scripts/		.gitignore
+		it3038c-scripts/		README.md
+		it3038c-scripts/labs/		labs_list.txt
+		it3038c-scripts/node/		placeholder.txt
+		it3038c-scripts/project1/	placeholder.txt
+		it3038c-scripts/python/		placeholder.txt
+		it3038c-scripts/testing/	.gitignore
+		it3038c-scripts/testing/	app.js
+		it3038c-scripts/testing/	index.html
+		it3038c-scripts/testing/	new.js
+		it3038c-scripts/testing/	output.log
