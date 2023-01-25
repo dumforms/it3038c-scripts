@@ -12,9 +12,9 @@ My app is so great, sometimes it works! Just download the script, add some execu
 Javascript code block to highlight whats up in my code
 ```
 
-* A single star creates a large heading
-** Two stars is less
-*** Three stars even less
-**** Four stars looks normal
+# A single star creates a large heading
+## Two stars is less
+### Three stars even less
+#### Four stars looks normal
 
 ======
