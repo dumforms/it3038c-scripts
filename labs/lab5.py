@@ -1,4 +1,4 @@
-import time, datetime, re, math
+import time, datetime, re, math, random
 
 #Function Definitions
 #====== Lab 5 Problem 1 ======#
@@ -62,7 +62,7 @@ def wordCount():
     print("The word \"%s\" contains %s consonants and %s vowels." %(word, consonantCount, vowelCount))
 
 #====== Lab 5 Problem 3 ======#
-#Check if num is prime. Code inspired by https://www.mygreatlearning.com/blog/prime-numbers-program-in-python/
+#Untility fucntion to check if a number is prime. Code inspired by https://www.mygreatlearning.com/blog/prime-numbers-program-in-python/
 def isPrime(num):
     end = int(math.sqrt(num) + 1)
     for i in range(2, end):
@@ -70,6 +70,7 @@ def isPrime(num):
             return False
     return True
     
+#Core function
 def primeCount():
     #Get and validate user input
     userNum = input("Enter your number: ")
@@ -95,8 +96,50 @@ def primeCount():
 
 #====== Lab 5 Problem 4 ======#
 def guessTheNumber():
-    print("guessTheNumber")
+    #Get and validate guess limit
+    ceiling = input("So you want to play a game! Please enter the biggest number I am allowed to guess: ")
+    valid = False
+    while (valid != True):
+        try:
+            ceiling = int(ceiling)
+            valid = True
+        except:
+            ceiling = input("You did not provide a number! Please enter a number: ")
+    
+    #Set guess parameters
+    print("Picking my guess...")
+    time.sleep(1)
+    target = random.randrange(0, ceiling)
+    numberOfGuesses = 1
 
+    #Get, validate, and check user guess
+    userGuess = input("Ok, I picked a number! What is your guess: ")
+    valid = False
+    #Outer loop + try/except catches non-integer inputs
+    while (valid != True):
+        try:
+            #Inner loop provides guess feedback and gets next guess
+            while (int(userGuess) != target):
+                if (int(userGuess) > target):
+                    userGuess = input("Too high! Try again: ")
+                    numberOfGuesses = numberOfGuesses + 1
+                else:
+                    userGuess = input("Too low! Try again: ")
+                    numberOfGuesses = numberOfGuesses + 1
+            #Breaks outer loop when guess is correct
+            valid = True
+            #Feedback on correct guess
+            if (numberOfGuesses == 1):
+                print("Wow, first try! You didn't cheat, did you?")
+            else:
+                print("Congratulations! You guessed my number after %s trys!" %numberOfGuesses)
+        except:
+            if (userGuess == "cheat"):
+                userGuess = input("I guessed " + str(target) + ", but you're not supposed to know that! What is your guess: ")
+            else:
+                userGuess = input("You did not provide a number! Please enter a number: ")
+
+#====== Main Program Starts Here ======#
 #List function options
 print("Select your preferred function from the options below:")
 print("1. BirthdayCalculation")
