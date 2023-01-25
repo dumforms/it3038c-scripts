@@ -16,8 +16,11 @@ $PS_Major = $HOST.Version.Major
 $PS_FULL = getFullVersion
 $DATE = Get-Date -Format "dddd, MMMM dd, yyyy"
 
-Write-Host("This machine's IP is $IP.
+$BODY = "This machine's IP is $IP.
 The current user is $USER.
 The Hostname is $HOSTNAME.
 The machine is running PowerShell version $PS_Major ($PS_FULL)
-Today's date is $DATE")
+Today's date is $DATE"
+
+Write-Host($BODY)
+Out-File -FilePath C:\Users\matth\Downloads\sysinfoOutput.txt -InputObject $BODY -Encoding ascii
