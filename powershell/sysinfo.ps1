@@ -1,8 +1,23 @@
 ﻿function getIP{
     (Get-NetIPAddress).IPv4Address | Select-String "10.*"
 }
+function getFullVersion{
+    
+    $PS_Minor = $HOST.Version.Minor
+    $PS_Build = $HOST.Version.Build
+    $PS_Rev = $HOST.Version.Revision
+    "$PS_Major" + "." + "$PS_Minor" + "." + "$PS_Build" + "." + "$PS_Rev"
+}
 
 $IP = getIP
-$PS = $HOST.Version.Major
+$USER = $env:USERNAME
+$HOSTNAME = hostname
+$PS_Major = $HOST.Version.Major
+$PS_FULL = getFullVersion
+$DATE = Get-Date -Format "dddd, MMMM dd, yyyy"
 
-Write-Host("This machine's IP is $IP")
+Write-Host("This machine's IP is $IP.
+The current user is $USER.
+The Hostname is $HOSTNAME.
+The machine is running PowerShell version $PS_Major ($PS_FULL)
+Today's date is $DATE")
