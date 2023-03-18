@@ -21,7 +21,6 @@ for link in downloadLinks:
 print("\t%s other web links:" %(len(otherWebLinks)))
 for link in otherWebLinks:
 	print("\t - " + link.get("href"))
-
 print("\t%s mail links:" %(len(mailToLinks)))
 for link in mailToLinks:
 	print("\t - " + link.get("href"))
