@@ -65,5 +65,5 @@ Finally, the logging functionality is all orginial code from me. That portion of
 - add email verification that sends an email to the submitted address
 - add a database to persistently store users even when the server is offline
 - improve HTML to make the site more interactive and user-friendly
-- add user preferences that can be stored and applied when a user logs in
+- add user preferences that can be stored and applied when a user logs in (e.g. dark mode)
 - add 3rd-party authentication (Google, Facebook, etc)
