@@ -29,14 +29,15 @@ The solution, copied from a comment on the video, is below:
   });
 });`
 
-## Required Modules
-- bcrypt
-- dotenv
-- ejs
-- express
-- express-flash
-- espress-session
-- method-override
-- nodemon
-- passport
-- passport-local
+## Required Modules (and why)
+- fs (read/write log file)
+- bcrypt (hash user passwords)
+- dotenv (environment variables)
+- ejs (dynamic html variables)
+- express (interactive html forms)
+- express-flash (display html message upon form submission)
+- espress-session (track user across site pages)
+- method-override (better logout functionality: override POST with DELETE)
+- nodemon (utility that restarts the server every time code changes are detected)
+- passport (user authentication)
+- passport-local (local-specific user authentication)
