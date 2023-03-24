@@ -1,9 +1,5 @@
-// Check production or dev environment and use appropriate variables
-if (process.env.NODE_ENV !== "produciton") {
-    require("dotenv").config()
-}
-
 // Require modules
+const fs = require("fs")
 const express = require("express")
 const app = express()
 const bcrypt = require("bcrypt")
@@ -11,13 +7,34 @@ const passport = require("passport")
 const flash = require("express-flash")
 const session = require("express-session")
 const methodOverride = require("method-override")
-
 const initializePassport = require("./passport-config")
-const { request } = require("express")
+//const { request } = require("express")
+
+
+// Write log messages to specificed file with a message type and body
+const logFilePath = "project2_logs.txt"
+function log(type, body) {
+    fs.appendFile(
+        logFilePath,
+        `${type}: ${body}\n`,
+        (err) => {
+            if (err) console.log(err)
+        }
+    )
+}
+
+// Check production or dev environment and use appropriate variables
+if (process.env.SERVER_ENV !== "production") {
+    log("STATUS", `Server started at ${new Date()}.`)
+    log("STATUS", "Production environment not detected. Requiring dotenv.")
+    require("dotenv").config()
+}
+
 initializePassport(
     passport, 
     email => users.find(user => user.email === email),
-    id => users.find(user => user.id === id)
+    id => users.find(user => user.id === id),
+    log
 )
 
 // Placeholder users list; would be a database in production software
@@ -62,8 +79,10 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
             password: hashedPassword
         })
         res.redirect("/login")
+        log("AUTH", `Registered new user ${req.body.name} with email ${req.body.email}.`)
     } catch {
         res.redirect("/register")
+        log("ERROR", "Failed to register new user.")
     }
     console.log(users)
 })
@@ -79,8 +98,10 @@ app.post("/login", checkNotAuthenticated, passport.authenticate("local", {
 app.delete("/logout", (req, res, next) => {
     req.logOut((err) => {
         if (err) {
+            log("ERROR", `Logout failed.`)
             return next(err)
         }
+        log("AUTH", `User sucessfully logged out.`)
         res.redirect("/login")
     })
 })
@@ -91,14 +112,17 @@ function checkAuthenticated(req, res, next) {
         return next()
     }
     res.redirect("/login")
+    log("AUTH", `Redirected unauthenticated user to \"/login\".`)
 }
 // Allow unauthenticated users to continue, otherwise redirect them to the homepage
 function checkNotAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
+        log("AUTH", `Redirected authenticated user to \"/\".`)
         return res.redirect("/")
     }
     next()
 }
 
 // Set listening port
-app.listen(3000)
+app.listen(process.env.SERVER_PORT)
+log("STATUS", `Server listening on port ${process.env.SERVER_PORT}.`)
