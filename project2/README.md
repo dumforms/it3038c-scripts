@@ -1,9 +1,15 @@
 # Project 2 README
 
-## Source Tutorial
-https://www.youtube.com/watch?v=-RCnNyD0L-s
+## Description
+This NodeJS project creates a simple website that allows users to register, login, and logout.
+Certain pages are restricted to only authenticated or only unauthenticated users, and invalid page requests will be redirected.
+The site valiates login attempts against stored user information to determine whether a login attempt is legitimate.
+All authentication and redirection actions are logged to a local file.
 
-Changes to the passport module since the video was published have rendered one portion (timestamp approximately 33:44) inaccurate.
+## Source Tutorial
+Most of the code for the login features came from this YouTube tutorial: https://www.youtube.com/watch?v=-RCnNyD0L-s
+
+Changes to the passport module since the video was published have rendered one portion of the video inaccurate.
 The solution, copied from a comment on the video, is below:
 
 > Numbers Oficial
@@ -41,3 +47,10 @@ The solution, copied from a comment on the video, is below:
 - nodemon (utility that restarts the server every time code changes are detected)
 - passport (user authentication)
 - passport-local (local-specific user authentication)
+
+## Future Improvements (Options for Project 3)
+- add email verification that sends an email to the submitted address
+- add a database to persistently store users even when the server is offline
+- improve HTML to make the site more interactive and user-friendly
+- add user preferences that can be stored and applied when a user logs in
+- add 3rd-party authentication (Google, Facebook, etc)
