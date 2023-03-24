@@ -6,7 +6,15 @@ Certain pages are restricted to only authenticated or only unauthenticated users
 The site valiates login attempts against stored user information to determine whether a login attempt is legitimate.
 All authentication and redirection actions are logged to a local file.
 
-## Source Tutorial
+## How to Run the Project
+1. Pull the it3038c-scripts/project2/ folder down to your local machine
+2. Navigate to your local project2/ folder via the command line
+3. Run `node server.js` (make sure you have node and npm isntalled)
+4. Type `localhost:3000/` into a web browser
+5. Explore the site: register, login, logoff, etc
+6. Check the `project2_logs.txt` file when finished
+
+## Project Inspiration
 Most of the code for the login features came from this YouTube tutorial: https://www.youtube.com/watch?v=-RCnNyD0L-s
 
 Changes to the passport module since the video was published have rendered one portion of the video inaccurate.
@@ -34,6 +42,11 @@ The solution, copied from a comment on the video, is below:
     res.redirect('/login');
   });
 });`
+
+## My Contributions
+I edited the code provided by the tutorial to increase readability and fix some errors (like the passport error above).
+I also added all the comments to demonstrate my understanding of the code and refresh my memory when I return to the project later.
+Finally, the logging functionality is all orginial code from me. That portion of the project was not included in the tutorial.
 
 ## Required Modules (and why)
 - fs (read/write log file)
