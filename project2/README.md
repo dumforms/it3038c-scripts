@@ -6,10 +6,13 @@ Certain pages are restricted to only authenticated or only unauthenticated users
 The site valiates login attempts against stored user information to determine whether a login attempt is legitimate.
 All authentication and redirection actions are logged to a local file.
 
+Note: For ease of use, I allowed the .env file (which contains the secret used to hash passwords) to upload to GitHub.
+I realize that this is an abysmal security decision and something that would never be allowed in a production environment!
+
 ## How to Run the Project
 1. Pull the it3038c-scripts/project2/ folder down to your local machine
 2. Navigate to your local project2/ folder via the command line
-3. Run `node server.js` (make sure you have node and npm isntalled)
+3. Run `node server.js` (make sure you have node and npm installed)
 4. Type `localhost:3000/` into a web browser
 5. Explore the site: register, login, logoff, etc
 6. Check the `project2_logs.txt` file when finished
