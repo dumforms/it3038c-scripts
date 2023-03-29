@@ -12,10 +12,11 @@ I realize that this is an abysmal security decision and something that would nev
 ## How to Run the Project
 1. Pull the it3038c-scripts/project2/ folder down to your local machine
 2. Navigate to your local project2/ folder via the command line
-3. Run `node server.js` (make sure you have node and npm installed)
-4. Type `localhost:3000/` into a web browser
-5. Explore the site: register, login, logoff, etc
-6. Check the `project2_logs.txt` file when finished
+3. Run `npm install` to install all the modules that npm finds in package.json (make sure you have npm installed first)
+4. Run `node server.js` (make sure you have node installed first)
+5. Type `localhost:3000/` into a web browser
+6. Explore the site: register, login, logoff, etc
+7. Check the `project2_logs.txt` file when finished
 
 ## Project Inspiration
 Most of the code for the login features came from this YouTube tutorial: https://www.youtube.com/watch?v=-RCnNyD0L-s
