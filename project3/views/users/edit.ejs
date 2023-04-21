@@ -1,0 +1,17 @@
+<h2>Edit User</h2>
+<form action="/users/<%= user.id %>?_method=PUT" method="POST">
+    <div>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" value="<%= user.name %>">
+    </div>
+    <div>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email">
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password">
+    </div>
+    <a href="/users/<%= user.id %>">Cancel</a>
+    <button type="submit">Update</button>
+</form>
