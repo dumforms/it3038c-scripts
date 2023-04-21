@@ -16,8 +16,8 @@ db.on('error', error => console.log(error))
 db.once('open', () => console.log('Connected to Mongoose'))
 
 // Require route files
-const indexRouter = require('./routes/index')
-const userRouter = require('./routes/users')
+const indexRouter = require('./routes/index_routes')
+const userRouter = require('./routes/users_routes')
 
 // Set view and view engine
 app.set('view engine', 'ejs')
