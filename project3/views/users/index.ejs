@@ -3,6 +3,4 @@
 <% users.forEach(user => { %>
     <div><%= user.name %>, <%= user.email %>, <%= user._id %></div>
     <a href="/users/<%= user.id %>">View</a>
-    <a href="/users/<%= user.id %>/edit">Edit</a>
-    <%- include('../partials/deleteForm', { url: `/users/${user.id}`}) %>
 <% }) %> 

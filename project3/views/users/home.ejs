@@ -1,0 +1,10 @@
+<h2>Hi <%= user.name %></h2>
+<form method="POST" action="/logout?_method=DELETE">
+    <button type="submit">Logout</button>
+</form>
+<form method="GET" action="/users/<%= user.id %>/edit">
+    <button type="submit">Edit</button>
+</form>
+<form method="POST" action="/users/<%= user.id %>?_method=DELETE">
+    <button type="submit">Delete</button>
+</form>
