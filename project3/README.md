@@ -18,63 +18,44 @@ User data is stored in an attached MongoDB instance.
 
 ### Part 3: Create the environment file
 1. Create a file called `.env` in the /project3/ folder
+2. Add the following code to the file:
+`PORT=3000
+DATABASE_URL=mongodb://localhost/users
+SESSION_SECRET=supersecret
+NODE_ENV=notProduction`
+3. Save the file
 
 ### Part 4: Run the web server and browse
-1. Run `node server.js` in the command line from Part 2
+1. Run `node server.js` in the command line from Part 2 (You should see a `Connected to Mongoose` response in the terminal
 2. Type `localhost:3000/` into a web browser
 3. Explore the site: register, login, logoff, etc
 4. Restart the program and run it again (notice how it saves users)
 
 ## Project Inspiration
-Most of the code for the login features came from this YouTube tutorial: https://www.youtube.com/watch?v=-RCnNyD0L-s
-
-Changes to the passport module since the video was published have rendered one portion of the video inaccurate.
-The solution, copied from a comment on the video, is below:
-
-> Numbers Oficial
-> 
-> 33:44 - Since passport version 0.6.0, req.logout is asynchronous.
-> 
-> You will get the error: "req#logout requires a callback function." 
-> To fix it, all you need to do is replace this:
-> 
-`app.delete('/logout', (req, res) => {
-  req.logOut();
-  res.redirect('/login');
-});`
-
-> By this:
-> 
-`app.delete('/logout', (req, res, next) => {
-  req.logOut((err) => {
-    if (err) {
-      return next(err);
-    }
-    res.redirect('/login');
-  });
-});`
+I was inspired by projects from the Web Dev Simplified YouTube channel. I took some ideas from a full stack playlist (https://www.youtube.com/playlist?list=PLZlA0Gpn_vH8jbFkBjOuFjhxANC63OmXM) and another simple MongoDB tutorial (https://www.youtube.com/watch?v=fgTGADljAeg)
 
 ## My Contributions
-I edited the code provided by the tutorial to increase readability and fix some errors (like the passport error above).
-I also added all the comments to demonstrate my understanding of the code and refresh my memory when I return to the project later.
-Finally, the logging functionality is all orginial code from me. That portion of the project was not included in the tutorial.
+I combined the login code from Project 2 with the database tutorials from the above playlists to create an original application. Getting the two projects to work together required a significant amount of original effort and research on my part.
 
 ## Required Modules (and why)
-- fs (read/write log file)
+### Always Required
 - bcrypt (hash user passwords)
-- dotenv (environment variables)
+- body-parser (url encoding and parsing)
 - ejs (dynamic html variables)
 - express (interactive html forms)
+- express-ejs-layouts (like methods but for HTML)
 - express-flash (display html message upon form submission)
 - espress-session (track user across site pages)
-- method-override (better logout functionality: override POST with DELETE)
-- nodemon (utility that restarts the server every time code changes are detected)
+- method-override (better HTML functionality, provides access to PUT and DELETE)
+- mongoose (MongoDB connection)
 - passport (user authentication)
 - passport-local (local-specific user authentication)
+### Development Only (still needed for peer review)
+- dotenv (environment variables)
+- nodemon (utility that restarts the server every time code changes are detected)
 
-## Future Improvements (Options for Project 3)
+## Potnetial Future Improvements
 - add email verification that sends an email to the submitted address
-- add a database to persistently store users even when the server is offline
 - improve HTML to make the site more interactive and user-friendly
 - add user preferences that can be stored and applied when a user logs in (e.g. dark mode)
 - add 3rd-party authentication (Google, Facebook, etc)
